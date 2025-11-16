@@ -1,12 +1,12 @@
 from flask import Flask, jsonify
-import requests
-import urllib3
+from flask_cors import CORS
+import requests, urllib3, re
 from html import unescape
-import re
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 app = Flask(__name__)
+CORS(app)
 
 def get_info_posts(per_page=20, page=1):
     url = "https://www.srbvoz.rs/wp-json/wp/v2/info_post"
