@@ -31,10 +31,13 @@ python main.py
 
 ## Description
 
-The script fetches the latest news/posts from **Srbija voz** ([https://srbijavoz.rs/](https://srbijavoz.rs/)) via their API and prints relevant information.
+The script fetches the latest news/posts from [Srbija voz](https://srbijavoz.rs/) via their API and prints relevant information.
 
 ## Notes
 
 The script disables SSL verification warnings due to certificate issues (verify=False in requests).
 
 Adjust per_page in the script if you want to fetch more or fewer posts.
+
+Added flask app for web page, also hosted [here](https://train-check-backend.onrender.com/bgvoz).
+
