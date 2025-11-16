@@ -2,11 +2,16 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 import requests, urllib3, re
 from html import unescape
+from time import time
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 app = Flask(__name__)
 CORS(app)
+
+cached_posts = []
+cache_time = 0
+CACHE_DURATION = 60
 
 def get_info_posts(per_page=20, page=1):
     url = "https://www.srbvoz.rs/wp-json/wp/v2/info_post"
@@ -56,7 +61,14 @@ def extract_bg_voz_posts():
 
 @app.route("/bgvoz")
 def bgvoz():
-    return jsonify(extract_bg_voz_posts())
+    global cached_posts, cache_time
+    current_time = time()
+
+    if current_time - cache_time > CACHE_DURATION:
+        cached_posts = extract_bg_voz_posts()
+        cache_time = current_time
+
+    return jsonify(cached_posts)
 
 @app.route("/")
 def home():
