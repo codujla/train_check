@@ -13,7 +13,7 @@ Python script that fetches and displays train service updates about BG:VOZ using
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/USERNAME/train_check.git
+git clone https://github.com/codujla/train_check.git
 cd train_check
 ```
 
@@ -26,7 +26,7 @@ pip install -r requirements.txt
 3. Run the script:
 
 ```bash
-python main.py
+python script.py
 ```
 
 ## Description
